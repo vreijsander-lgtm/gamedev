@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://wiyqvmoyty23"]
+
+[ext_resource type="Texture2D" uid="uid://cqbighad3jf7p" path="res://art/sr2e59046da2152.webp" id="1_cqfal"]
+[ext_resource type="Script" uid="uid://b4q41t5vppjv4" path="res://scripts/aim.gd" id="1_m7cv4"]
+
+[node name="Node2D" type="Node2D"]
+scale = Vector2(0.1, 0.1)
+script = ExtResource("1_m7cv4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_cqfal")

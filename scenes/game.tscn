@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://8naw5t15wh1v"]
+
+[ext_resource type="PackedScene" uid="uid://chxkvgotw2hy8" path="res://scenes/character_body_2d.tscn" id="1_uwrxv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uwrxv"]
+bg_color = Color(0.56065303, 0.60570675, 0.6590935, 1)
+
+[node name="game" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_uwrxv")]
+position = Vector2(87, 329)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(918, -288)
+scale = Vector2(-1.912, 1)
+anchor_mode = 0
+zoom = Vector2(4, 4)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+modulate = Color(0.44815022, 0.41699076, 0.14962992, 1)
+offset_left = 39.000004
+offset_top = 120.0
+offset_right = 43.000004
+offset_bottom = 147.50763
+scale = Vector2(62.66081, 0.8433691)
+theme_override_colors/font_color = Color(0.73052543, 0.61199754, 0.120194264, 1)
+theme_override_styles/fill = SubResource("StyleBoxFlat_uwrxv")
+show_percentage = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+offset_left = 32.0
+offset_right = 72.0
+offset_bottom = 40.0
+scale = Vector2(4.1683874, 2.627605)
