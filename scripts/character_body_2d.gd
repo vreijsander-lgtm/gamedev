@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var health_container = get_node("../CanvasLayer/HBoxContainer")
 @onready var ammo_bar = get_node("../CanvasLayer/ProgressBar")
 
+@onready var other_node = get_node("../Aim/Sprite2D")
 @export_range(0, 1000) var speed := 60.0
 
 @export var max_health := 6
@@ -68,7 +69,8 @@ func get_player_input() -> void:
 	if Input.is_action_pressed("click") and can_shoot:
 		shoot()
 	if Input.is_action_pressed("menu"):
-		get_tree().change_scene_to_file("res://scenes/main menu.tscn")
+		GameData.HighScore = 0
+		get_tree().change_scene_to_file("res://scenes/highscore_.tscn")
 func shoot() -> void:
 	if current_ammo <= 0:
 		return
@@ -79,7 +81,8 @@ func shoot() -> void:
 	new_bullet.damage = damage
 	new_bullet.global_position = global_position
 
-	var direction = global_position.direction_to(get_global_mouse_position())
+	var target_pos = other_node.global_position
+	var direction = global_position.direction_to(target_pos)
 	new_bullet.rotation = direction.angle() + PI / 2
 
 	new_bullet.speed = bullet_speed
@@ -129,9 +132,9 @@ func take_damage(amount: int) -> void:
 	current_health = max(current_health, 0)
 
 	update_health_display()
-
+	GameData.HighScore -= 400
 	if current_health <= 0:
-		get_tree().change_scene_to_file("res://scenes/main menu.tscn")
+		get_tree().change_scene_to_file("res://scenes/highscore_.tscn")
 func heal(amount: int) -> void:
 	current_health += amount
 	current_health = min(current_health, max_health)

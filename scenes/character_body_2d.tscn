@@ -181,6 +181,7 @@ scale = Vector2(-0.633, 0.6)
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_f50pn")
+bullet_range = 10000.0
 shoot_cooldown = 1.0
 reload_time_per_bullet = 2.0
 
@@ -208,3 +209,6 @@ shadow_filter = 1
 shadow_item_cull_mask = 513
 texture = SubResource("GradientTexture2D_dn4c7")
 texture_scale = 1.65
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(5, 5)

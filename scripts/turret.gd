@@ -6,7 +6,8 @@ var bullet_scene = preload("res://scenes/bullet.tscn")
 @onready var ray_center = $RayCastCenter
 @onready var ray_up = $RayCastUp
 @onready var ray_down = $RayCastDown
-
+var once_Locked_on = false
+var shoot_aantal = 0
 @export var bullet_speed := 250.0
 @export var bullet_range := 500.0
 @export var shoot_cooldown := 0.5
@@ -26,7 +27,7 @@ func _process(delta: float) -> void:
 
 	if locked_on:
 		var target_angle = global_position.direction_to(player.global_position).angle()
-
+		
 		rotation = rotate_toward(
 			rotation,
 			target_angle,
@@ -36,7 +37,7 @@ func _process(delta: float) -> void:
 
 	else:
 		rotation += deg_to_rad(scan_speed) * delta
-
+	
 	check_vision()
 
 
@@ -85,6 +86,9 @@ func shoot() -> void:
 	await get_tree().create_timer(shoot_cooldown).timeout
 	can_shoot = true
 func take_damage(amount: int) -> void:
+	if shoot_aantal == 3:
+		shoot_aantal = 0
+		GameData.HighScore += 1
 	current_health -= amount
 	if current_health <= 0:
 		queue_free()

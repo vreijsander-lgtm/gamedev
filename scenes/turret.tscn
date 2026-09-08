@@ -1,35 +1,62 @@
-[gd_scene load_steps=4 format=3 uid="uid://cp6u4krj8rpm1"]
+[gd_scene load_steps=6 format=3 uid="uid://cp6u4krj8rpm1"]
 
 [ext_resource type="Script" uid="uid://x3a6sopukea7" path="res://scripts/turret.gd" id="1_el7wl"]
-[ext_resource type="Texture2D" uid="uid://c4u8vr7s0bfoo" path="res://art/dbk6s0q-ae674f69-f9dd-4a2f-9673-a6049fabe448.png" id="1_x3mc5"]
+[ext_resource type="Texture2D" uid="uid://c23r844t16mi6" path="res://scenes/body_02.png" id="2_el7wl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x3mc5"]
+size = Vector2(37, 20)
+
+[sub_resource type="Gradient" id="Gradient_g2brh"]
+offsets = PackedFloat32Array(0, 0.8125)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_el7wl"]
+gradient = SubResource("Gradient_g2brh")
+width = 192
+height = 192
+fill = 1
+fill_from = Vector2(0.5375, 0.48125)
+fill_to = Vector2(1, 0.48125)
 
 [node name="enemy" type="Area2D"]
 script = ExtResource("1_el7wl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.07961683, 0.11386405)
-texture = ExtResource("1_x3mc5")
+texture_filter = 1
+position = Vector2(8.611346, 1.5332007e-06)
+rotation = 4.712389
+scale = Vector2(0.3125, 0.2908023)
+texture = ExtResource("2_el7wl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8.5, 0)
 shape = SubResource("RectangleShape2D_x3mc5")
 
 [node name="RayCastCenter" type="RayCast2D" parent="."]
 scale = Vector2(2.2704763, 24.153477)
-target_position = Vector2(63.422813, 0.041401908)
+target_position = Vector2(129.0478, 0)
 collision_mask = 3
 
 [node name="RayCastDown" type="RayCast2D" parent="."]
 position = Vector2(3.5762787e-07, 3.999998)
 rotation = 0.052853703
 scale = Vector2(0.5037482, 32.91984)
-target_position = Vector2(281.72342, 0.9887067)
+target_position = Vector2(564.77954, 0.6378857)
 collision_mask = 3
 
 [node name="RayCastUp" type="RayCast2D" parent="."]
 rotation = -0.4496612
 scale = Vector2(0.57912457, 28.762608)
 skew = 0.16014886
-target_position = Vector2(252.66328, 1.0012861)
+target_position = Vector2(482.82034, 3.066749)
 collision_mask = 3
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(161.27277, -3.5454636)
+scale = Vector2(1.2623883, 0.24073839)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+shadow_filter = 1
+shadow_item_cull_mask = 513
+texture = SubResource("GradientTexture2D_el7wl")
+texture_scale = 1.65

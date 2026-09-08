@@ -1,11 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://wiyqvmoyty23"]
+[gd_scene load_steps=7 format=3 uid="uid://wiyqvmoyty23"]
 
+[ext_resource type="Shader" uid="uid://c0kb02ubfjk0e" path="res://invert.gdshader" id="1_ayq5a"]
 [ext_resource type="Texture2D" uid="uid://cqbighad3jf7p" path="res://art/sr2e59046da2152.webp" id="1_cqfal"]
 [ext_resource type="Script" uid="uid://b4q41t5vppjv4" path="res://scripts/aim.gd" id="1_m7cv4"]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ksx6t"]
+shader = ExtResource("1_ayq5a")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ayq5a"]
+shader = ExtResource("1_ayq5a")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ayq5a"]
+size = Vector2(14.896447, 14.883913)
+
+[node name="Node2D" type="CharacterBody2D"]
+material = SubResource("ShaderMaterial_ksx6t")
+position = Vector2(1.9999999, -0.99999994)
 scale = Vector2(0.1, 0.1)
+motion_mode = 1
 script = ExtResource("1_m7cv4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ayq5a")
 texture = ExtResource("1_cqfal")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.9073486e-06)
+scale = Vector2(6.0768547, 5.831139)
+shape = SubResource("RectangleShape2D_ayq5a")
+disabled = true
+one_way_collision = true
