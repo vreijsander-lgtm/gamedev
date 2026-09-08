@@ -70,6 +70,7 @@ func get_player_input() -> void:
 		shoot()
 	if Input.is_action_pressed("menu"):
 		GameData.HighScore = 0
+		await get_tree().create_timer(1).timeout
 		get_tree().change_scene_to_file("res://scenes/highscore_.tscn")
 func shoot() -> void:
 	if current_ammo <= 0:
