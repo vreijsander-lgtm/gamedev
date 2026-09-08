@@ -133,7 +133,7 @@ func take_damage(amount: int) -> void:
 	current_health = max(current_health, 0)
 
 	update_health_display()
-	GameData.HighScore -= 400
+	GameData.HighScore -= 200
 	if current_health <= 0:
 		get_tree().change_scene_to_file("res://scenes/highscore_.tscn")
 func heal(amount: int) -> void:

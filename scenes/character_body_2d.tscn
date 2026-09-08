@@ -183,6 +183,7 @@ motion_mode = 1
 script = ExtResource("1_f50pn")
 bullet_range = 10000.0
 shoot_cooldown = 1.0
+max_ammo = 12
 reload_time_per_bullet = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
